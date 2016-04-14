@@ -9,14 +9,13 @@ const apiList = {};
 
 /*
  * Initialise a new API.
- * init('intercom', 'intercom.io', config.intercom);
- * init('tel', 'twilio', config.twilio.accountSID, config.twilio.authToken);
- * init('intercom', 'intercom.io', (module) => { return new module.InitThis('abc', 123); });
+ * init('intercom', require('intercom-client'), config.intercom);
+ * init('tel', require('twilio'), config.twilio.accountSID, config.twilio.authToken);
+ * init('intercom', require('intercom-client'), (module) => { return new module.InitThis('abc', 123); });
  */
-ME.init = function (key, moduleName) {
+ME.init = function (key, Module) {
 
   const args = Array.prototype.slice.call(arguments, 2);  // Don't include the first two parameters.
-  const Module = require(moduleName);
 
   // Can't reuse keys.
   if (apiList[key]) { throw new Error('API-Ninja: An API has already been instantiated with this key!'); }
