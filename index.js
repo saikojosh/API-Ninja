@@ -13,7 +13,7 @@ const apiList = {};
  * init('tel', 'twilio', config.twilio.accountSID, config.twilio.authToken);
  * init('intercom', 'intercom.io', (module) => { return new module.InitThis('abc', 123); });
  */
-ME.init = (key, moduleName) => {
+ME.init = function (key, moduleName) {
 
   const args = Array.prototype.slice.call(arguments, 2);  // Don't include the first two parameters.
   const Module = require(moduleName);
@@ -36,6 +36,6 @@ ME.init = (key, moduleName) => {
 /*
  * Returns the given API instance.
  */
-ME.use = (key) => {
+ME.use = function (key) {
   return apiList[key];
 };
