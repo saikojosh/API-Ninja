@@ -1,0 +1,31 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saikojosh/API-Ninja.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saikojosh/API-Ninja/issues"
+  },
+  "name": "api-ninja",
+  "version": "0.0.1",
+  "description": "Handles the instantiation of multiple different APIs so they can be used across multiple Node modules.",
+  "keywords": [
+    "api",
+    "instantiate"
+  ],
+  "main": "index.js",
+  "bin": {
+    "trawler": "index.js"
+  },
+  "author": "Josh Cole <saikojosh@gmail.com> (http://www.JoshuaCole.me)",
+  "contributors": [
+    {
+      "name": "Josh Cole",
+      "email": "saikojosh@gmail.com"
+    }
+  ],
+  "dependencies": {
+
+  },
+  "license": "MIT"
+}
