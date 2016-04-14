@@ -7,7 +7,7 @@
     "url": "https://github.com/saikojosh/API-Ninja/issues"
   },
   "name": "api-ninja",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Handles the instantiation of multiple different APIs so they can be used across multiple Node modules.",
   "keywords": [
     "api",
