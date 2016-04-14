@@ -24,6 +24,9 @@
       "email": "saikojosh@gmail.com"
     }
   ],
+  "devDependencies": {
+    "twilio": "2.9.x"
+  },
   "dependencies": {
 
   },
