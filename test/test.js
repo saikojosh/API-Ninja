@@ -2,6 +2,6 @@
 
 const apis = require('../index');
 
-const twilio = apis.init('tel', 'twilio', 'accountSID', 'authToken');
+const tel = apis.init('tel', require('twilio'), 'accountSID', 'authToken');
 
-console.log('twilio', twilio);
+console.log('tel', tel);
