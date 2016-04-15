@@ -16,16 +16,25 @@ const apiList = {};
 ME.init = function (key, Module) {
 
   const args = Array.prototype.slice.call(arguments, 2);  // Don't include the first two parameters.
+  let instance;
 
   // Can't reuse keys.
-  if (apiList[key]) { throw new Error('API-Ninja: An API has already been instantiated with this key!'); }
+  if (apiList[key] && Object.keys(apiList[key]).length) {
+    throw new Error('API-Ninja: An API has already been instantiated with this key!');
+  }
 
+  // Instantiate using function.
   if (args.length === 1 && typeof args[0] === 'function') {
-    apiList[key] = args[0](Module);
+    instance = args[0](Module);
+
+  // Instantiate using parameters.
   } else {
     args.unshift(null);
-    apiList[key] = new (Function.prototype.bind.apply(Module, args));
+    instance = new (Function.prototype.bind.apply(Module, args));
   }
+
+  // Merge the instance into the api list.
+  if (apiList[key]) { Object.assign(apiList[key], instance); } else { apiList[key] = instance; }
 
   // Also return the instance so we can use it immediately.
   return apiList[key];
@@ -33,8 +42,10 @@ ME.init = function (key, Module) {
 };
 
 /*
- * Returns the given API instance.
+ * Returns the given API instance. We assume all keys passed in are correct, and if the key hasn't been instantiated yet
+ * we provide an empty object.
  */
 ME.use = function (key) {
+  if (typeof apiList[key] === 'undefined') { apiList[key] = {}; }
   return apiList[key];
 };
